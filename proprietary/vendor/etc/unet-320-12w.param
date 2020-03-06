@@ -1,0 +1,162 @@
+7767517
+160 165
+Input            data             0 1 data 0=320 1=320 2=3
+Convolution      conv1_mobile     1 1 data conv1_mobile 0=16 1=3 2=1 3=2 4=1 5=0 6=432
+BatchNorm        conv1/bn_mobile  1 1 conv1_mobile conv1_mobile_conv1/bn_mobile 0=16
+Scale            conv1/scale_mobile 1 1 conv1_mobile_conv1/bn_mobile conv1_mobile_conv1/scale_mobile 0=16 1=1
+ReLU             relu1_mobile     1 1 conv1_mobile_conv1/scale_mobile conv1_mobile_relu1_mobile
+Split            splitncnn_0      1 2 conv1_mobile_relu1_mobile conv1_mobile_relu1_mobile_splitncnn_0 conv1_mobile_relu1_mobile_splitncnn_1
+ConvolutionDepthWise conv2_1/dw_mobile 1 1 conv1_mobile_relu1_mobile_splitncnn_1 conv2_1/dw_mobile 0=16 1=3 2=1 3=1 4=1 5=0 6=144 7=16
+BatchNorm        conv2_1/dw/bn_mobile 1 1 conv2_1/dw_mobile conv2_1/dw_mobile_conv2_1/dw/bn_mobile 0=16
+Scale            conv2_1/dw/scale_mobile 1 1 conv2_1/dw_mobile_conv2_1/dw/bn_mobile conv2_1/dw_mobile_conv2_1/dw/scale_mobile 0=16 1=1
+ReLU             relu2_1/dw_mobile 1 1 conv2_1/dw_mobile_conv2_1/dw/scale_mobile conv2_1/dw_mobile_relu2_1/dw_mobile
+Convolution      conv2_1/sep_mobile 1 1 conv2_1/dw_mobile_relu2_1/dw_mobile conv2_1/sep_mobile 0=32 1=1 2=1 3=1 4=0 5=0 6=512
+BatchNorm        conv2_1/sep/bn_mobile 1 1 conv2_1/sep_mobile conv2_1/sep_mobile_conv2_1/sep/bn_mobile 0=32
+Scale            conv2_1/sep/scale_mobile 1 1 conv2_1/sep_mobile_conv2_1/sep/bn_mobile conv2_1/sep_mobile_conv2_1/sep/scale_mobile 0=32 1=1
+ReLU             relu2_1/sep_mobile 1 1 conv2_1/sep_mobile_conv2_1/sep/scale_mobile conv2_1/sep_mobile_relu2_1/sep_mobile
+Split            splitncnn_1      1 2 conv2_1/sep_mobile_relu2_1/sep_mobile conv2_1/sep_mobile_relu2_1/sep_mobile_splitncnn_0 conv2_1/sep_mobile_relu2_1/sep_mobile_splitncnn_1
+ConvolutionDepthWise conv2_2/dw_mobile 1 1 conv2_1/sep_mobile_relu2_1/sep_mobile_splitncnn_1 conv2_2/dw_mobile 0=32 1=3 2=1 3=2 4=1 5=0 6=288 7=32
+BatchNorm        conv2_2/dw/bn_mobile 1 1 conv2_2/dw_mobile conv2_2/dw_mobile_conv2_2/dw/bn_mobile 0=32
+Scale            conv2_2/dw/scale_mobile 1 1 conv2_2/dw_mobile_conv2_2/dw/bn_mobile conv2_2/dw_mobile_conv2_2/dw/scale_mobile 0=32 1=1
+ReLU             relu2_2/dw_mobile 1 1 conv2_2/dw_mobile_conv2_2/dw/scale_mobile conv2_2/dw_mobile_relu2_2/dw_mobile
+Convolution      conv2_2/sep_mobile 1 1 conv2_2/dw_mobile_relu2_2/dw_mobile conv2_2/sep_mobile 0=64 1=1 2=1 3=1 4=0 5=0 6=2048
+BatchNorm        conv2_2/sep/bn_mobile 1 1 conv2_2/sep_mobile conv2_2/sep_mobile_conv2_2/sep/bn_mobile 0=64
+Scale            conv2_2/sep/scale_mobile 1 1 conv2_2/sep_mobile_conv2_2/sep/bn_mobile conv2_2/sep_mobile_conv2_2/sep/scale_mobile 0=64 1=1
+ReLU             relu2_2/sep_mobile 1 1 conv2_2/sep_mobile_conv2_2/sep/scale_mobile conv2_2/sep_mobile_relu2_2/sep_mobile
+ConvolutionDepthWise conv3_1/dw_mobile 1 1 conv2_2/sep_mobile_relu2_2/sep_mobile conv3_1/dw_mobile 0=64 1=3 2=1 3=1 4=1 5=0 6=576 7=64
+BatchNorm        conv3_1/dw/bn_mobile 1 1 conv3_1/dw_mobile conv3_1/dw_mobile_conv3_1/dw/bn_mobile 0=64
+Scale            conv3_1/dw/scale_mobile 1 1 conv3_1/dw_mobile_conv3_1/dw/bn_mobile conv3_1/dw_mobile_conv3_1/dw/scale_mobile 0=64 1=1
+ReLU             relu3_1/dw_mobile 1 1 conv3_1/dw_mobile_conv3_1/dw/scale_mobile conv3_1/dw_mobile_relu3_1/dw_mobile
+Convolution      conv3_1/sep_mobile 1 1 conv3_1/dw_mobile_relu3_1/dw_mobile conv3_1/sep_mobile 0=64 1=1 2=1 3=1 4=0 5=0 6=4096
+BatchNorm        conv3_1/sep/bn_mobile 1 1 conv3_1/sep_mobile conv3_1/sep_mobile_conv3_1/sep/bn_mobile 0=64
+Scale            conv3_1/sep/scale_mobile 1 1 conv3_1/sep_mobile_conv3_1/sep/bn_mobile conv3_1/sep_mobile_conv3_1/sep/scale_mobile 0=64 1=1
+ReLU             relu3_1/sep_mobile 1 1 conv3_1/sep_mobile_conv3_1/sep/scale_mobile conv3_1/sep_mobile_relu3_1/sep_mobile
+Split            splitncnn_2      1 2 conv3_1/sep_mobile_relu3_1/sep_mobile conv3_1/sep_mobile_relu3_1/sep_mobile_splitncnn_0 conv3_1/sep_mobile_relu3_1/sep_mobile_splitncnn_1
+ConvolutionDepthWise conv3_2/dw_mobile 1 1 conv3_1/sep_mobile_relu3_1/sep_mobile_splitncnn_1 conv3_2/dw_mobile 0=64 1=3 2=1 3=2 4=1 5=0 6=576 7=64
+BatchNorm        conv3_2/dw/bn_mobile 1 1 conv3_2/dw_mobile conv3_2/dw_mobile_conv3_2/dw/bn_mobile 0=64
+Scale            conv3_2/dw/scale_mobile 1 1 conv3_2/dw_mobile_conv3_2/dw/bn_mobile conv3_2/dw_mobile_conv3_2/dw/scale_mobile 0=64 1=1
+ReLU             relu3_2/dw_mobile 1 1 conv3_2/dw_mobile_conv3_2/dw/scale_mobile conv3_2/dw_mobile_relu3_2/dw_mobile
+Convolution      conv3_2/sep_mobile 1 1 conv3_2/dw_mobile_relu3_2/dw_mobile conv3_2/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=8192
+BatchNorm        conv3_2/sep/bn_mobile 1 1 conv3_2/sep_mobile conv3_2/sep_mobile_conv3_2/sep/bn_mobile 0=128
+Scale            conv3_2/sep/scale_mobile 1 1 conv3_2/sep_mobile_conv3_2/sep/bn_mobile conv3_2/sep_mobile_conv3_2/sep/scale_mobile 0=128 1=1
+ReLU             relu3_2/sep_mobile 1 1 conv3_2/sep_mobile_conv3_2/sep/scale_mobile conv3_2/sep_mobile_relu3_2/sep_mobile
+ConvolutionDepthWise conv4_1/dw_mobile 1 1 conv3_2/sep_mobile_relu3_2/sep_mobile conv4_1/dw_mobile 0=128 1=3 2=1 3=1 4=1 5=0 6=1152 7=128
+BatchNorm        conv4_1/dw/bn_mobile 1 1 conv4_1/dw_mobile conv4_1/dw_mobile_conv4_1/dw/bn_mobile 0=128
+Scale            conv4_1/dw/scale_mobile 1 1 conv4_1/dw_mobile_conv4_1/dw/bn_mobile conv4_1/dw_mobile_conv4_1/dw/scale_mobile 0=128 1=1
+ReLU             relu4_1/dw_mobile 1 1 conv4_1/dw_mobile_conv4_1/dw/scale_mobile conv4_1/dw_mobile_relu4_1/dw_mobile
+Convolution      conv4_1/sep_mobile 1 1 conv4_1/dw_mobile_relu4_1/dw_mobile conv4_1/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv4_1/sep/bn_mobile 1 1 conv4_1/sep_mobile conv4_1/sep_mobile_conv4_1/sep/bn_mobile 0=128
+Scale            conv4_1/sep/scale_mobile 1 1 conv4_1/sep_mobile_conv4_1/sep/bn_mobile conv4_1/sep_mobile_conv4_1/sep/scale_mobile 0=128 1=1
+ReLU             relu4_1/sep_mobile 1 1 conv4_1/sep_mobile_conv4_1/sep/scale_mobile conv4_1/sep_mobile_relu4_1/sep_mobile
+Split            splitncnn_3      1 2 conv4_1/sep_mobile_relu4_1/sep_mobile conv4_1/sep_mobile_relu4_1/sep_mobile_splitncnn_0 conv4_1/sep_mobile_relu4_1/sep_mobile_splitncnn_1
+ConvolutionDepthWise conv4_2/dw_mobile 1 1 conv4_1/sep_mobile_relu4_1/sep_mobile_splitncnn_1 conv4_2/dw_mobile 0=128 1=3 2=1 3=2 4=1 5=0 6=1152 7=128
+BatchNorm        conv4_2/dw/bn_mobile 1 1 conv4_2/dw_mobile conv4_2/dw_mobile_conv4_2/dw/bn_mobile 0=128
+Scale            conv4_2/dw/scale_mobile 1 1 conv4_2/dw_mobile_conv4_2/dw/bn_mobile conv4_2/dw_mobile_conv4_2/dw/scale_mobile 0=128 1=1
+ReLU             relu4_2/dw_mobile 1 1 conv4_2/dw_mobile_conv4_2/dw/scale_mobile conv4_2/dw_mobile_relu4_2/dw_mobile
+Convolution      conv4_2/sep_mobile 1 1 conv4_2/dw_mobile_relu4_2/dw_mobile conv4_2/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv4_2/sep/bn_mobile 1 1 conv4_2/sep_mobile conv4_2/sep_mobile_conv4_2/sep/bn_mobile 0=128
+Scale            conv4_2/sep/scale_mobile 1 1 conv4_2/sep_mobile_conv4_2/sep/bn_mobile conv4_2/sep_mobile_conv4_2/sep/scale_mobile 0=128 1=1
+ReLU             relu4_2/sep_mobile 1 1 conv4_2/sep_mobile_conv4_2/sep/scale_mobile conv4_2/sep_mobile_relu4_2/sep_mobile
+ConvolutionDepthWise conv5_1/dw_mobile 1 1 conv4_2/sep_mobile_relu4_2/sep_mobile conv5_1/dw_mobile 0=128 1=3 2=1 3=1 4=1 5=0 6=1152 7=128
+BatchNorm        conv5_1/dw/bn_mobile 1 1 conv5_1/dw_mobile conv5_1/dw_mobile_conv5_1/dw/bn_mobile 0=128
+Scale            conv5_1/dw/scale_mobile 1 1 conv5_1/dw_mobile_conv5_1/dw/bn_mobile conv5_1/dw_mobile_conv5_1/dw/scale_mobile 0=128 1=1
+ReLU             relu5_1/dw_mobile 1 1 conv5_1/dw_mobile_conv5_1/dw/scale_mobile conv5_1/dw_mobile_relu5_1/dw_mobile
+Convolution      conv5_1/sep_mobile 1 1 conv5_1/dw_mobile_relu5_1/dw_mobile conv5_1/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv5_1/sep/bn_mobile 1 1 conv5_1/sep_mobile conv5_1/sep_mobile_conv5_1/sep/bn_mobile 0=128
+Scale            conv5_1/sep/scale_mobile 1 1 conv5_1/sep_mobile_conv5_1/sep/bn_mobile conv5_1/sep_mobile_conv5_1/sep/scale_mobile 0=128 1=1
+ReLU             relu5_1/sep_mobile 1 1 conv5_1/sep_mobile_conv5_1/sep/scale_mobile conv5_1/sep_mobile_relu5_1/sep_mobile
+ConvolutionDepthWise conv5_2/dw_mobile 1 1 conv5_1/sep_mobile_relu5_1/sep_mobile conv5_2/dw_mobile 0=128 1=3 2=2 3=1 4=2 5=0 6=1152 7=128
+BatchNorm        conv5_2/dw/bn_mobile 1 1 conv5_2/dw_mobile conv5_2/dw_mobile_conv5_2/dw/bn_mobile 0=128
+Scale            conv5_2/dw/scale_mobile 1 1 conv5_2/dw_mobile_conv5_2/dw/bn_mobile conv5_2/dw_mobile_conv5_2/dw/scale_mobile 0=128 1=1
+ReLU             relu5_2/dw_mobile 1 1 conv5_2/dw_mobile_conv5_2/dw/scale_mobile conv5_2/dw_mobile_relu5_2/dw_mobile
+Convolution      conv5_2/sep_mobile 1 1 conv5_2/dw_mobile_relu5_2/dw_mobile conv5_2/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv5_2/sep/bn_mobile 1 1 conv5_2/sep_mobile conv5_2/sep_mobile_conv5_2/sep/bn_mobile 0=128
+Scale            conv5_2/sep/scale_mobile 1 1 conv5_2/sep_mobile_conv5_2/sep/bn_mobile conv5_2/sep_mobile_conv5_2/sep/scale_mobile 0=128 1=1
+ReLU             relu5_2/sep_mobile 1 1 conv5_2/sep_mobile_conv5_2/sep/scale_mobile conv5_2/sep_mobile_relu5_2/sep_mobile
+ConvolutionDepthWise conv5_3/dw_mobile 1 1 conv5_2/sep_mobile_relu5_2/sep_mobile conv5_3/dw_mobile 0=128 1=3 2=5 3=1 4=5 5=0 6=1152 7=128
+BatchNorm        conv5_3/dw/bn_mobile 1 1 conv5_3/dw_mobile conv5_3/dw_mobile_conv5_3/dw/bn_mobile 0=128
+Scale            conv5_3/dw/scale_mobile 1 1 conv5_3/dw_mobile_conv5_3/dw/bn_mobile conv5_3/dw_mobile_conv5_3/dw/scale_mobile 0=128 1=1
+ReLU             relu5_3/dw_mobile 1 1 conv5_3/dw_mobile_conv5_3/dw/scale_mobile conv5_3/dw_mobile_relu5_3/dw_mobile
+Convolution      conv5_3/sep_mobile 1 1 conv5_3/dw_mobile_relu5_3/dw_mobile conv5_3/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv5_3/sep/bn_mobile 1 1 conv5_3/sep_mobile conv5_3/sep_mobile_conv5_3/sep/bn_mobile 0=128
+Scale            conv5_3/sep/scale_mobile 1 1 conv5_3/sep_mobile_conv5_3/sep/bn_mobile conv5_3/sep_mobile_conv5_3/sep/scale_mobile 0=128 1=1
+ReLU             relu5_3/sep_mobile 1 1 conv5_3/sep_mobile_conv5_3/sep/scale_mobile conv5_3/sep_mobile_relu5_3/sep_mobile
+ConvolutionDepthWise conv5_4/dw_mobile 1 1 conv5_3/sep_mobile_relu5_3/sep_mobile conv5_4/dw_mobile 0=128 1=3 2=7 3=1 4=7 5=0 6=1152 7=128
+BatchNorm        conv5_4/dw/bn_mobile 1 1 conv5_4/dw_mobile conv5_4/dw_mobile_conv5_4/dw/bn_mobile 0=128
+Scale            conv5_4/dw/scale_mobile 1 1 conv5_4/dw_mobile_conv5_4/dw/bn_mobile conv5_4/dw_mobile_conv5_4/dw/scale_mobile 0=128 1=1
+ReLU             relu5_4/dw_mobile 1 1 conv5_4/dw_mobile_conv5_4/dw/scale_mobile conv5_4/dw_mobile_relu5_4/dw_mobile
+Convolution      conv5_4/sep_mobile 1 1 conv5_4/dw_mobile_relu5_4/dw_mobile conv5_4/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv5_4/sep/bn_mobile 1 1 conv5_4/sep_mobile conv5_4/sep_mobile_conv5_4/sep/bn_mobile 0=128
+Scale            conv5_4/sep/scale_mobile 1 1 conv5_4/sep_mobile_conv5_4/sep/bn_mobile conv5_4/sep_mobile_conv5_4/sep/scale_mobile 0=128 1=1
+ReLU             relu5_4/sep_mobile 1 1 conv5_4/sep_mobile_conv5_4/sep/scale_mobile conv5_4/sep_mobile_relu5_4/sep_mobile
+ConvolutionDepthWise conv5_5/dw_mobile 1 1 conv5_4/sep_mobile_relu5_4/sep_mobile conv5_5/dw_mobile 0=128 1=3 2=1 3=1 4=1 5=0 6=1152 7=128
+BatchNorm        conv5_5/dw/bn_mobile 1 1 conv5_5/dw_mobile conv5_5/dw_mobile_conv5_5/dw/bn_mobile 0=128
+Scale            conv5_5/dw/scale_mobile 1 1 conv5_5/dw_mobile_conv5_5/dw/bn_mobile conv5_5/dw_mobile_conv5_5/dw/scale_mobile 0=128 1=1
+ReLU             relu5_5/dw_mobile 1 1 conv5_5/dw_mobile_conv5_5/dw/scale_mobile conv5_5/dw_mobile_relu5_5/dw_mobile
+Convolution      conv5_5/sep_mobile 1 1 conv5_5/dw_mobile_relu5_5/dw_mobile conv5_5/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv5_5/sep/bn_mobile 1 1 conv5_5/sep_mobile conv5_5/sep_mobile_conv5_5/sep/bn_mobile 0=128
+Scale            conv5_5/sep/scale_mobile 1 1 conv5_5/sep_mobile_conv5_5/sep/bn_mobile conv5_5/sep_mobile_conv5_5/sep/scale_mobile 0=128 1=1
+ReLU             relu5_5/sep_mobile 1 1 conv5_5/sep_mobile_conv5_5/sep/scale_mobile conv5_5/sep_mobile_relu5_5/sep_mobile
+Split            splitncnn_4      1 2 conv5_5/sep_mobile_relu5_5/sep_mobile conv5_5/sep_mobile_relu5_5/sep_mobile_splitncnn_0 conv5_5/sep_mobile_relu5_5/sep_mobile_splitncnn_1
+ConvolutionDepthWise conv5_6/dw_mobile 1 1 conv5_5/sep_mobile_relu5_5/sep_mobile_splitncnn_1 conv5_6/dw_mobile 0=128 1=3 2=2 3=1 4=2 5=0 6=1152 7=128
+BatchNorm        conv5_6/dw/bn_mobile 1 1 conv5_6/dw_mobile conv5_6/dw_mobile_conv5_6/dw/bn_mobile 0=128
+Scale            conv5_6/dw/scale_mobile 1 1 conv5_6/dw_mobile_conv5_6/dw/bn_mobile conv5_6/dw_mobile_conv5_6/dw/scale_mobile 0=128 1=1
+ReLU             relu5_6/dw_mobile 1 1 conv5_6/dw_mobile_conv5_6/dw/scale_mobile conv5_6/dw_mobile_relu5_6/dw_mobile
+Convolution      conv5_6/sep_mobile 1 1 conv5_6/dw_mobile_relu5_6/dw_mobile conv5_6/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv5_6/sep/bn_mobile 1 1 conv5_6/sep_mobile conv5_6/sep_mobile_conv5_6/sep/bn_mobile 0=128
+Scale            conv5_6/sep/scale_mobile 1 1 conv5_6/sep_mobile_conv5_6/sep/bn_mobile conv5_6/sep_mobile_conv5_6/sep/scale_mobile 0=128 1=1
+ReLU             relu5_6/sep_mobile 1 1 conv5_6/sep_mobile_conv5_6/sep/scale_mobile conv5_6/sep_mobile_relu5_6/sep_mobile
+ConvolutionDepthWise conv6/dw_mobile  1 1 conv5_6/sep_mobile_relu5_6/sep_mobile conv6/dw_mobile 0=128 1=3 2=5 3=1 4=5 5=0 6=1152 7=128
+BatchNorm        conv6/dw/bn_mobile 1 1 conv6/dw_mobile conv6/dw_mobile_conv6/dw/bn_mobile 0=128
+Scale            conv6/dw/scale_mobile 1 1 conv6/dw_mobile_conv6/dw/bn_mobile conv6/dw_mobile_conv6/dw/scale_mobile 0=128 1=1
+ReLU             relu6/dw_mobile  1 1 conv6/dw_mobile_conv6/dw/scale_mobile conv6/dw_mobile_relu6/dw_mobile
+Convolution      conv6/sep_mobile 1 1 conv6/dw_mobile_relu6/dw_mobile conv6/sep_mobile 0=128 1=1 2=1 3=1 4=0 5=0 6=16384
+BatchNorm        conv6/sep/bn_mobile 1 1 conv6/sep_mobile conv6/sep_mobile_conv6/sep/bn_mobile 0=128
+Scale            conv6/sep/scale_mobile 1 1 conv6/sep_mobile_conv6/sep/bn_mobile conv6/sep_mobile_conv6/sep/scale_mobile 0=128 1=1
+ReLU             relu6/sep_mobile 1 1 conv6/sep_mobile_conv6/sep/scale_mobile conv6/sep_mobile_relu6/sep_mobile
+Concat           concat1_mobile   2 1 conv6/sep_mobile_relu6/sep_mobile conv5_5/sep_mobile_relu5_5/sep_mobile_splitncnn_0 concat1_mobile 0=0
+ConvolutionDepthWise concat1_mobile/dw 1 1 concat1_mobile concat1_mobile/dw 0=256 1=3 2=7 3=1 4=7 5=0 6=2304 7=256
+BatchNorm        concat1_mobile/dw/bn 1 1 concat1_mobile/dw concat1_mobile/dw_concat1_mobile/dw/bn 0=256
+Scale            concat1_mobile/dw/scale 1 1 concat1_mobile/dw_concat1_mobile/dw/bn concat1_mobile/dw_concat1_mobile/dw/scale 0=256 1=1
+ReLU             reluconcat1_mobile/dw 1 1 concat1_mobile/dw_concat1_mobile/dw/scale concat1_mobile/dw_reluconcat1_mobile/dw
+Convolution      concat1_mobile/sep 1 1 concat1_mobile/dw_reluconcat1_mobile/dw concat1_mobile/sep 0=128 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        concat1_mobile/sep/bn 1 1 concat1_mobile/sep concat1_mobile/sep_concat1_mobile/sep/bn 0=128
+Scale            concat1_mobile/sep/scale 1 1 concat1_mobile/sep_concat1_mobile/sep/bn concat1_mobile/sep_concat1_mobile/sep/scale 0=128 1=1
+ReLU             reluconcat1_mobile/sep 1 1 concat1_mobile/sep_concat1_mobile/sep/scale concat1_mobile/sep_reluconcat1_mobile/sep
+DeconvolutionDepthWise up2_mobile       1 1 concat1_mobile/sep_reluconcat1_mobile/sep up2_mobile 0=128 1=4 2=1 3=2 4=1 5=0 6=2048 7=128
+Concat           concat2_mobile   2 1 up2_mobile conv4_1/sep_mobile_relu4_1/sep_mobile_splitncnn_0 concat2_mobile 0=0
+ConvolutionDepthWise concat2_mobile/dw 1 1 concat2_mobile concat2_mobile/dw 0=256 1=3 2=1 3=1 4=1 5=0 6=2304 7=256
+BatchNorm        concat2_mobile/dw/bn 1 1 concat2_mobile/dw concat2_mobile/dw_concat2_mobile/dw/bn 0=256
+Scale            concat2_mobile/dw/scale 1 1 concat2_mobile/dw_concat2_mobile/dw/bn concat2_mobile/dw_concat2_mobile/dw/scale 0=256 1=1
+ReLU             reluconcat2_mobile/dw 1 1 concat2_mobile/dw_concat2_mobile/dw/scale concat2_mobile/dw_reluconcat2_mobile/dw
+Convolution      concat2_mobile/sep 1 1 concat2_mobile/dw_reluconcat2_mobile/dw concat2_mobile/sep 0=128 1=1 2=1 3=1 4=0 5=0 6=32768
+BatchNorm        concat2_mobile/sep/bn 1 1 concat2_mobile/sep concat2_mobile/sep_concat2_mobile/sep/bn 0=128
+Scale            concat2_mobile/sep/scale 1 1 concat2_mobile/sep_concat2_mobile/sep/bn concat2_mobile/sep_concat2_mobile/sep/scale 0=128 1=1
+ReLU             reluconcat2_mobile/sep 1 1 concat2_mobile/sep_concat2_mobile/sep/scale concat2_mobile/sep_reluconcat2_mobile/sep
+DeconvolutionDepthWise up3_mobile       1 1 concat2_mobile/sep_reluconcat2_mobile/sep up3_mobile 0=64 1=4 2=1 3=2 4=1 5=0 6=2048 7=64
+Concat           concat3_mobile   2 1 up3_mobile conv3_1/sep_mobile_relu3_1/sep_mobile_splitncnn_0 concat3_mobile 0=0
+ConvolutionDepthWise concat3_mobile/dw 1 1 concat3_mobile concat3_mobile/dw 0=128 1=3 2=2 3=1 4=2 5=0 6=1152 7=128
+BatchNorm        concat3_mobile/dw/bn 1 1 concat3_mobile/dw concat3_mobile/dw_concat3_mobile/dw/bn 0=128
+Scale            concat3_mobile/dw/scale 1 1 concat3_mobile/dw_concat3_mobile/dw/bn concat3_mobile/dw_concat3_mobile/dw/scale 0=128 1=1
+ReLU             reluconcat3_mobile/dw 1 1 concat3_mobile/dw_concat3_mobile/dw/scale concat3_mobile/dw_reluconcat3_mobile/dw
+Convolution      concat3_mobile/sep 1 1 concat3_mobile/dw_reluconcat3_mobile/dw concat3_mobile/sep 0=64 1=1 2=1 3=1 4=0 5=0 6=8192
+BatchNorm        concat3_mobile/sep/bn 1 1 concat3_mobile/sep concat3_mobile/sep_concat3_mobile/sep/bn 0=64
+Scale            concat3_mobile/sep/scale 1 1 concat3_mobile/sep_concat3_mobile/sep/bn concat3_mobile/sep_concat3_mobile/sep/scale 0=64 1=1
+ReLU             reluconcat3_mobile/sep 1 1 concat3_mobile/sep_concat3_mobile/sep/scale concat3_mobile/sep_reluconcat3_mobile/sep
+DeconvolutionDepthWise up4_mobile       1 1 concat3_mobile/sep_reluconcat3_mobile/sep up4_mobile 0=32 1=4 2=1 3=2 4=1 5=0 6=1024 7=32
+Concat           concat4_mobile   2 1 up4_mobile conv2_1/sep_mobile_relu2_1/sep_mobile_splitncnn_0 concat4_mobile 0=0
+ConvolutionDepthWise concat4_mobile/dw 1 1 concat4_mobile concat4_mobile/dw 0=64 1=3 2=5 3=1 4=5 5=0 6=576 7=64
+BatchNorm        concat4_mobile/dw/bn 1 1 concat4_mobile/dw concat4_mobile/dw_concat4_mobile/dw/bn 0=64
+Scale            concat4_mobile/dw/scale 1 1 concat4_mobile/dw_concat4_mobile/dw/bn concat4_mobile/dw_concat4_mobile/dw/scale 0=64 1=1
+ReLU             reluconcat4_mobile/dw 1 1 concat4_mobile/dw_concat4_mobile/dw/scale concat4_mobile/dw_reluconcat4_mobile/dw
+Convolution      concat4_mobile/sep 1 1 concat4_mobile/dw_reluconcat4_mobile/dw concat4_mobile/sep 0=32 1=1 2=1 3=1 4=0 5=0 6=2048
+BatchNorm        concat4_mobile/sep/bn 1 1 concat4_mobile/sep concat4_mobile/sep_concat4_mobile/sep/bn 0=32
+Scale            concat4_mobile/sep/scale 1 1 concat4_mobile/sep_concat4_mobile/sep/bn concat4_mobile/sep_concat4_mobile/sep/scale 0=32 1=1
+ReLU             reluconcat4_mobile/sep 1 1 concat4_mobile/sep_concat4_mobile/sep/scale concat4_mobile/sep_reluconcat4_mobile/sep
+Concat           concat5_mobile   2 1 concat4_mobile/sep_reluconcat4_mobile/sep conv1_mobile_relu1_mobile_splitncnn_0 concat5_mobile 0=0
+Convolution      conv_concat5_mobile 1 1 concat5_mobile conv_concat5_mobile 0=16 1=3 2=7 3=1 4=7 5=0 6=6912
+BatchNorm        conv_concat5_mobile/bn 1 1 conv_concat5_mobile conv_concat5_mobile_conv_concat5_mobile/bn 0=16
+Scale            conv_concat5_mobile/scale 1 1 conv_concat5_mobile_conv_concat5_mobile/bn conv_concat5_mobile_conv_concat5_mobile/scale 0=16 1=1
+ReLU             reluconv_concat5_mobile 1 1 conv_concat5_mobile_conv_concat5_mobile/scale conv_concat5_mobile_reluconv_concat5_mobile
+Convolution      score_fr_mobile  1 1 conv_concat5_mobile_reluconv_concat5_mobile score_fr_mobile 0=2 1=1 2=1 3=1 4=0 5=1 6=32
+DeconvolutionDepthWise up5_mobile       1 1 score_fr_mobile up5_mobile 0=2 1=4 2=1 3=2 4=1 5=0 6=32 7=2
